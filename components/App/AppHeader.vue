@@ -1,32 +1,25 @@
 <script setup lang="ts"></script>
 
 <template>
-  <header class="md:w-[80%] flex justify-between m-auto items-center">
-    <IconsCalendar />
-
+  <header class="md:w-[80%] pt-2 flex justify-center m-auto items-center">
     <nav>
       <ul class="flex gap-6">
         <li>
           <a
             href="#how-it-work"
-            class="font-medium text-[#2d2d2d] hover:text-[#78A0CF]"
+            class="font-medium text-[#2d2d2d] text-sm md:text-base hover:text-[#78A0CF]"
             >How It Works</a
           >
         </li>
         <li>
-          <a href="#philosophy" class="font-medium hover:text-[#78A0CF]"
+          <a
+            href="#philosophy"
+            class="font-medium text-sm md:text-base hover:text-[#78A0CF]"
             >Philosophy</a
           >
         </li>
       </ul>
     </nav>
-
-    <button
-      type="button"
-      class="border border-[#78A0CF] hover:text-white hover:bg-[#78A0CF]/70 text-[#78A0CF] hover:border-[#78A0CF]/70 font-medium rounded-lg px-5 py-2.5 shadow-md"
-    >
-      <a href="#generate">Generate</a>
-    </button>
   </header>
 </template>
 
