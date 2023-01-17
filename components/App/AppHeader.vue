@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <header class="md:w-[80%] pt-2 flex justify-center m-auto items-center">
+  <header class="md:w-[80%] pt-4 flex justify-center m-auto items-center">
     <nav>
       <ul class="flex gap-6">
         <li>

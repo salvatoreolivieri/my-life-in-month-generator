@@ -3,7 +3,7 @@
 <template>
   <div
     id="how-it-work"
-    class="py-56 flex items-center justify-center flex-col gap-10"
+    class="py-10 flex items-center justify-center flex-col gap-10"
   >
     <h1 class="text-[#2d2d2d] text-4xl md:text-5xl font-bold">
       How It <span class="text-[#78A0CF]">Works</span>
@@ -46,8 +46,8 @@
 
     <a
       class="font-medium hover:underline text-lg text-[#78A0CF] flex flex-col gap-3 items-center"
-      href="#generate"
-      >Start your inner awakening
+      href="#philosophy"
+      >Explore the Philosophy
 
       <IconsArrowDown class="text-[#78A0CF]" />
     </a>
