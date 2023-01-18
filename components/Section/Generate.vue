@@ -23,27 +23,41 @@ const saveBirthday = () => {
 const validateDay = computed(() => {})
 const validateMonth = computed(() => {})
 const validateYear = computed(() => {})
+
+const generateCalendar = () => console.log("generate")
 </script>
 
 <template>
   <div
     id="generate"
-    class="py-14 flex items-center justify-center flex-col gap-10 md:h-[700px]"
+    class="py-14 flex items-center justify-center flex-col gap-8 md:h-[700px]"
   >
-    <h1 class="text-[#78A0CF] text-4xl md:text-5xl font-bold text-center">
-      Generate
+    <h1 class="text-4xl text-[#2d2d2d] md:text-5xl font-bold md:text-center">
+      Insert your <span class="text-[#78A0CF]">Birthday</span>
     </h1>
 
-    <div class="md:max-w-[700px]">
+    <div class="flex flex-col gap-3">
+      <CreativeCalendar />
+
+      <span
+        @click="generateCalendar"
+        class="text-[#78A0CF] transition cursor-pointer duration-200 ease-out flex items-center gap-4 justify-end mt-2"
+      >
+        Create
+        <IconsArrowLong />
+      </span>
+    </div>
+
+    <!-- <div class="md:max-w-[700px]">
       <div class="relative z-0 w-full mb-6 group h-20">
         <input
           @input="saveBirthday"
           v-maska
           v-model="inputValue"
-          data-maska="##/##/####"
+          data-maska="## / ## / ####"
           name="floating_email"
           id="floating_email"
-          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           placeholder=" "
           required
         />
@@ -53,14 +67,8 @@ const validateYear = computed(() => {})
           >Insert your birthday</label
         >
 
-        <a
-          v-if="inputValue.length === 10"
-          class="text-[#78A0CF] transition duration-200 ease-out flex items-center gap-4 justify-end mt-2"
-        >
-          Create
-          <IconsArrowLong />
-        </a>
+        
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
