@@ -21,25 +21,29 @@ const format = (date: any) => {
 const emit = defineEmits<{ (e: "onSelected", value: string): void }>()
 
 const handleDate = (date: any) => {
-  date.value = date
+  console.log(date)
+
   emit("onSelected", format(date))
 }
 
-const datepicker = ref()
+const dateRef = Date.now()
 </script>
 
 <template>
   <div>
     <Datepicker
       class="date_picker-wrapper"
-      v-model="datepicker"
+      v-model="dateRef"
       inline
       auto-apply
-      format="dd/mm/yyyy"
       reverse-years
+      :max-date="new Date()"
+      format="dd/mm/yyyy"
       :year-range="[1901, 2023]"
       :month-change-on-scroll="false"
       @update:modelValue="handleDate"
+      @internal-model-change="handleDate"
+
     >
       <template #year="{ year }">
         <p>{{ year }}</p>
@@ -47,8 +51,10 @@ const datepicker = ref()
 
       <template #calendar-icon>
         <div class="flex w-full items-center gap-1 px-2 py-2">
-          <span class="cursor-pointer text-[#78A0CF] hover:underline">
-            - Back
+          <span
+            class="cursor-pointer flex gap-2 items-center text-[#78A0CF] hover:underline"
+          >
+            <IconsClose /> Close
           </span>
         </div>
       </template>
@@ -66,7 +72,7 @@ const datepicker = ref()
 
     .dp__month_year {
       &-row {
-        @apply h-max bg-white py-2;
+        @apply bg-white py-2;
       }
 
       &_wrap {
@@ -85,15 +91,13 @@ const datepicker = ref()
     }
 
     .dp__calendar {
-      @apply max-w-[400px];
-
       &_wrap {
         @apply bg-zinc-50 border-t border-t-zinc-100;
       }
 
       // header from monday to sunday
       &_header {
-        @apply w-full gap-3 px-3 py-2;
+        @apply gap-3 px-3 py-2;
 
         &_separator {
           @apply hidden;
@@ -106,7 +110,7 @@ const datepicker = ref()
 
       // all days
       &_row {
-        @apply w-full gap-3 py-1 px-3;
+        @apply gap-3 py-1 px-3;
       }
 
       &_item {
