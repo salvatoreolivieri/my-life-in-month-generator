@@ -15,14 +15,12 @@ const format = (date: any) => {
   }
 
   const year = date.getFullYear()
-  return `${day}/${month}/${year}`
+  return `${year}-${month}-${day}`
 }
 
 const emit = defineEmits<{ (e: "onSelected", value: string): void }>()
 
 const handleDate = (date: any) => {
-  console.log(date)
-
   emit("onSelected", format(date))
 }
 
@@ -43,7 +41,6 @@ const dateRef = Date.now()
       :month-change-on-scroll="false"
       @update:modelValue="handleDate"
       @internal-model-change="handleDate"
-
     >
       <template #year="{ year }">
         <p>{{ year }}</p>

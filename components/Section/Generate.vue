@@ -1,34 +1,21 @@
 <script setup lang="ts">
-const inputValue = ref("")
-const showCreateButton = ref(false)
+import moment from "moment"
 
-const currentYear = new Date().getFullYear() // 2023
-const currentMonth = new Date().getMonth() + 1 // Gennaio
-
-const birthDay = ref()
-const birthMonth = ref()
-const birthYear = ref()
-
-const saveBirthday = () => {
-  birthDay.value = inputValue.value.split("/")[0]
-  birthMonth.value = inputValue.value.split("/")[1]
-  birthYear.value = inputValue.value.split("/")[2]
-
-  console.log("giorno", birthDay.value)
-  console.log("mese", birthMonth.value)
-  console.log("anno", birthYear.value)
+const calculateLivedMonths = (date) => {
+  const today = moment()
+  const birthday = moment(date)
+  const differenceInMonths = today.diff(birthday, "months")
+  console.log(differenceInMonths)
 }
 
+const inputValue = ref()
+
 const updateInputValue = (date) => {
-  showCreateButton.value = true
   inputValue.value = date
 }
 
 const generateCalendar = () => {
-  saveBirthday()
-
-  const livedMonth = (currentYear - birthYear.value) * 12
-  console.log(livedMonth)
+  calculateLivedMonths(inputValue.value)
 }
 </script>
 
@@ -45,9 +32,8 @@ const generateCalendar = () => {
       <CreativeCalendar @onSelected="(date) => updateInputValue(date)" />
 
       <span
-        v-if="showCreateButton"
         @click="generateCalendar"
-        class="text-[#78A0CF] transition cursor-pointer duration-200 ease-out flex items-center gap-4 justify-end mt-2"
+        class="text-[#78A0CF] transition hover:underline cursor-pointer duration-200 ease-out flex items-center gap-4 justify-end mt-2"
       >
         Create
         <IconsArrowLong />
