@@ -14,7 +14,7 @@
       Evaluate your time behing aware about your mortality
     </h4>
 
-    <div class="md:max-w-[700px]">
+    <div class="md:max-w-[700px] mb-6">
       <p class="text-center text-gray-700">
         Inspired to the
         <a

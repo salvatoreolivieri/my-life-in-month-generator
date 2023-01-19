@@ -1,29 +1,40 @@
 <script setup lang="ts">
 import moment from "moment"
+import JsPDF from "jspdf"
+import html2canvas from "html2canvas"
 
+const inputValue = ref()
 const livedMonths = ref()
 
 const livedMonthsMessages = computed(() =>
   livedMonths.value ? livedMonths.value : "..."
 )
 
-const calculateLivedMonths = (date) => {
+const calculateLivedMonths = (date: moment.MomentInput) => {
   const today = moment()
   const birthday = moment(date)
   livedMonths.value = today.diff(birthday, "months")
   console.log(livedMonths.value)
 }
 
-const inputValue = ref()
-
-const updateInputValue = (date) => {
+const updateInputValue = (date: any) => {
   inputValue.value = date
 
   calculateLivedMonths(inputValue.value)
 }
 
-const generateCalendar = () => {
+const generateCalendar = async () => {
   console.log("generate")
+
+  const doc = new JsPDF("p", "mm", "a4")
+  const canvas = await html2canvas(document.body)
+  const imgData = canvas.toDataURL("image/png")
+  doc.addImage(imgData, "PNG", 0, 0)
+  console.log(doc)
+
+  // doc.autoTable({ html: state.htmlElement })
+  // pdfData.value = doc.output("datauristring")
+  doc.save("LifeCalendar_Generator.pdf")
 }
 </script>
 
@@ -35,8 +46,8 @@ const generateCalendar = () => {
       </h1>
 
       <p class="text-center md:max-w-[420px] text-gray-700">
-        Each of us who will arrive at the end of the month and will have one
-        less month to live. You can choose whether
+        Each of us who will arrive at the end of the month will have one less
+        month to live. You can choose whether
         <strong>to be aware of it</strong> and use this calendar
         <strong>consciously</strong> or you can try to
         <strong>escape death</strong>. The choice is yours.
@@ -63,27 +74,6 @@ const generateCalendar = () => {
         </div>
       </div>
     </div>
-
-    <!-- <div class="md:max-w-[700px]">
-      <div class="relative z-0 w-full mb-6 group h-20">
-        <input
-          @input="saveBirthday"
-          v-maska
-          v-model="inputValue"
-          data-maska="## / ## / ####"
-          name="floating_email"
-          id="floating_email"
-          class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-          placeholder=" "
-          required
-        />
-        <label
-          for="floating_email"
-          class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-[#78A0CF] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >Insert your birthday</label
-        >
-      </div>
-    </div> -->
   </div>
 </template>
 

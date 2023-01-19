@@ -2,6 +2,21 @@
 import Datepicker from "@vuepic/vue-datepicker"
 import "@vuepic/vue-datepicker/dist/main.css"
 
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+]
+
 const format = (date: any) => {
   let day = date.getDate()
 
@@ -38,12 +53,17 @@ const dateRef = Date.now()
       :max-date="new Date()"
       format="dd/mm/yyyy"
       :year-range="[1901, 2023]"
+      hide-offset-dates
       :month-change-on-scroll="false"
       @update:modelValue="handleDate"
       @internal-model-change="handleDate"
     >
       <template #year="{ year }">
         <p>{{ year }}</p>
+      </template>
+
+      <template #month="{ value }">
+        {{ months[value] }}
       </template>
 
       <template #calendar-icon>
