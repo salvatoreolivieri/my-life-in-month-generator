@@ -4,7 +4,7 @@ import JsPDF from "jspdf"
 import html2canvas from "html2canvas"
 
 const inputValue = ref()
-const livedMonths = ref()
+const livedMonths = ref(0)
 
 const livedMonthsMessages = computed(() =>
   livedMonths.value ? livedMonths.value : "..."
@@ -26,14 +26,18 @@ const updateInputValue = (date: any) => {
 const generateCalendar = async () => {
   console.log("generate")
 
-  const doc = new JsPDF("p", "mm", "a4")
-  const canvas = await html2canvas(document.body)
-  const imgData = canvas.toDataURL("image/png")
-  doc.addImage(imgData, "PNG", 0, 0)
-  console.log(doc)
+  // Crea un nuovo oggetto JsPDF
+  const doc = new JsPDF("p", "cm", "a3")
 
-  // doc.autoTable({ html: state.htmlElement })
-  // pdfData.value = doc.output("datauristring")
+  // Seleziona l'elemento da stampare
+  const element = document.getElementById("filled-calendar")
+
+  // Utilizza html2canvas per convertire l'elemento in un'immagine
+  const canvas = await html2canvas(element)
+  const imgData = canvas.toDataURL("image/png")
+
+  // Aggiungi l'immagine alla pagina del PDF
+  doc.addImage(imgData, "PNG", 1, 2)
   doc.save("LifeCalendar_Generator.pdf")
 }
 </script>
@@ -54,21 +58,49 @@ const generateCalendar = async () => {
       </p>
 
       <div class="flex flex-col gap-3 min-h-[400px]">
-        <CreativeCalendar @onSelected="(date) => updateInputValue(date)" />
+        <div class="flex md:flex-row flex-col gap-10">
+          <div>
+            <CreativeCalendar @onSelected="(date) => updateInputValue(date)" />
+            <p
+              v-if="livedMonths"
+              class="text-center text-zinc-300 mt-4 text-sm"
+            >
+              You already lived
+              <span class="text-[#78A0CF]/80 animate pop"
+                >{{ livedMonthsMessages }}
+              </span>
+              /
+
+              <span class="text-[#78A0CF]/80 animate pop">1080 </span>
+
+              months <br />
+              (based on a 90 years person)
+            </p>
+          </div>
+          <div id="filled-calendar" class="flex justify-center w-full">
+            <div class="max-w-[500px] relative">
+              <div
+                class="max-w-[390px] top-[50px] left-[79px] flex flex-wrap gap-[2.72px]"
+              >
+                <div
+                  v-for="x in livedMonths"
+                  class="w-2 h-2 rounded-full bg-black border border-black"
+                ></div>
+                <div
+                  v-for="x in 1080 - livedMonths"
+                  class="w-2 h-2 rounded-full border border-black"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div v-if="livedMonths" class="animate pop">
-          <p class="text-center text-zinc-300 mt-1 text-sm">
-            You already lived
-            <span class="text-[#78A0CF]/80 animate pop"
-              >{{ livedMonthsMessages }}
-            </span>
-            months
-          </p>
           <span
             @click="generateCalendar"
-            class="animate pop text-[#78A0CF] transition hover:underline cursor-pointer flex items-center gap-2 justify-end mt-5 md:hover:translate-x-4"
+            class="animate pop text-[#78A0CF] transition hover:underline cursor-pointer flex items-center gap-2 justify-end mt-3 md:hover:translate-x-4"
           >
-            Create
+            Generate PDF
             <IconsArrowLong />
           </span>
         </div>

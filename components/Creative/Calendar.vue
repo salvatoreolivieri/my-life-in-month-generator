@@ -43,7 +43,7 @@ const dateRef = Date.now()
 </script>
 
 <template>
-  <div>
+  <div class="text-center">
     <Datepicker
       class="date_picker-wrapper"
       v-model="dateRef"
