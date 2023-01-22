@@ -14,7 +14,7 @@ const calculateLivedMonths = (date: moment.MomentInput) => {
   const today = moment()
   const birthday = moment(date)
   livedMonths.value = today.diff(birthday, "months")
-  console.log(livedMonths.value)
+  // console.log(livedMonths.value)
 }
 
 const updateInputValue = (date: any) => {
@@ -24,7 +24,7 @@ const updateInputValue = (date: any) => {
 }
 
 const generateCalendar = async () => {
-  console.log("generate")
+  // console.log("generate")
 
   // Crea un nuovo oggetto JsPDF
   const doc = new JsPDF("p", "cm", "a3")
@@ -37,7 +37,7 @@ const generateCalendar = async () => {
   const imgData = canvas.toDataURL("image/png")
 
   // Aggiungi l'immagine alla pagina del PDF
-  doc.addImage(imgData, "PNG", 1, 2)
+  doc.addImage(imgData, "PNG", 5, 10)
   doc.save("LifeCalendar_Generator.pdf")
 }
 </script>
