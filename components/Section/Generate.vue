@@ -37,7 +37,7 @@ const generateCalendar = async () => {
   const imgData = canvas.toDataURL("image/png")
 
   // Aggiungi l'immagine alla pagina del PDF
-  doc.addImage(imgData, "PNG", 5, 10)
+  doc.addImage(imgData, "PNG", 3, 10)
   doc.save("LifeCalendar_Generator.pdf")
 }
 </script>
