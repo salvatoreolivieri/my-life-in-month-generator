@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      title: "Nuxt Blueprint",
+      title: "Life Calendar Generator",
       htmlAttrs: {
         lang: "en",
       },
@@ -10,9 +10,10 @@ export default defineNuxtConfig({
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
-          hid: "description",
+          hid: "Life Calendar Generator",
           name: "description",
-          content: "This is my first Nuxt App",
+          content:
+            "A simple and free Life Calendar Generator to help you understand the value of time",
         },
         { name: "format-detection", content: "telephone=no" },
       ],
