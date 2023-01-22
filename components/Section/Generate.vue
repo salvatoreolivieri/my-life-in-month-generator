@@ -66,9 +66,7 @@ const generateCalendar = async () => {
               class="text-center text-zinc-300 mt-4 text-sm"
             >
               You already lived
-              <span class="text-[#78A0CF]/80 animate pop"
-                >{{ livedMonthsMessages }}
-              </span>
+              <span class="text-[#78A0CF]/80">{{ livedMonthsMessages }} </span>
               /
 
               <span class="text-[#78A0CF]/80 animate pop">1080 </span>
@@ -95,10 +93,21 @@ const generateCalendar = async () => {
           </div>
         </div>
 
+        <div class="w-full flex justify-center">
+          <p
+            v-if="livedMonths"
+            class="text-center text-zinc-300 mt-4 max-w-[450px] text-sm flex justify-center"
+          >
+            I suggest you to print this PDF and take a moment, every first day
+            of every month, to put a new circle in this calendar and say goodbye
+            to the month that no longer belongs to you.
+          </p>
+        </div>
+
         <div v-if="livedMonths" class="animate pop">
           <span
             @click="generateCalendar"
-            class="animate pop text-[#78A0CF] transition hover:underline cursor-pointer flex items-center gap-2 justify-end mt-3 md:hover:translate-x-4"
+            class="animate pop text-[#78A0CF] transition hover:underline cursor-pointer flex items-center gap-2 justify-center mt-3 md:hover:translate-x-4"
           >
             Generate PDF
             <IconsArrowLong />
