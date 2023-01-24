@@ -3,7 +3,12 @@
 <template>
   <footer>
     <span class="text-center block text-xs text-gray-400 sm:text-center">
-      Created by
+      <a
+        class="underline text-[#78A0CF] font-semibold"
+        href="https://donate.stripe.com/bIY5mTfVGgvX0y45ko"
+        >Donate to support</a
+      >
+      | Created by
       <a
         class="underline text-[#78A0CF] font-semibold"
         target="_blank"
