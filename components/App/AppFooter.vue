@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <footer>
+  <footer class="mt-4">
     <span class="text-center block text-xs text-gray-400 sm:text-center">
       <a
         class="underline text-[#78A0CF] font-semibold"
