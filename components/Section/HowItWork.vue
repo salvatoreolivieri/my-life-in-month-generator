@@ -17,7 +17,8 @@
           Start from the beginning
         </h5>
         <p class="font-normal text-gray-700">
-          It's easy. You just insert your birthday. (do you remember it, right?)
+          It's easy. You just need to insert your birthday. (do you remember it,
+          right?)
         </p>
       </div>
       <div
@@ -39,7 +40,7 @@
         </h5>
         <p class="font-normal text-gray-700">
           You see the the representation of your life in months. At first you
-          cry and despair, then you became aware and you start value you time.
+          cry and despair, then you became aware and you start value your time.
         </p>
       </div>
     </div>
