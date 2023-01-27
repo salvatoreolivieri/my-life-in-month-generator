@@ -20,7 +20,7 @@
     "@vuepic/vue-datepicker": "^3.6.5",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
-    "nuxt-icon": "^0.1.8",
+    "nuxt-icon": "^0.2.10",
     "pdf-lib": "^1.17.1",
     "puppeteer": "^19.5.2"
   }
