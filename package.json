@@ -22,6 +22,6 @@
     "jspdf": "^2.5.1",
     "nuxt-icon": "^0.1.8",
     "pdf-lib": "^1.17.1",
-    "puppeteer": "^19.5.2"
+    "puppeteer": "^19.7.0"
   }
 }
