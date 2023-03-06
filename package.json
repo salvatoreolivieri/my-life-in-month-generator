@@ -17,7 +17,7 @@
     "@nuxt/image": "^0.7.1",
     "@nuxtjs/color-mode": "^3.2.0",
     "@nuxtjs/tailwindcss": "^6.2.0",
-    "@vuepic/vue-datepicker": "^3.6.5",
+    "@vuepic/vue-datepicker": "^4.2.0",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "nuxt-icon": "^0.1.8",
